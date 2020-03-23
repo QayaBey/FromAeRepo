@@ -1,0 +1,51 @@
+$(function() {
+    var $tabButtonItem = $('#tab-button li'),
+        $tabSelect = $('#tab-select'),
+        $tabContents = $('.tab-contents'),
+        activeClass = 'is-active';
+  
+    $tabButtonItem.first().addClass(activeClass);
+    $tabContents.not(':first').hide();
+  
+    $tabButtonItem.find('a').on('click', function(e) {
+      var target = $(this).attr('href');
+  
+      $tabButtonItem.removeClass(activeClass);
+      $(this).parent().addClass(activeClass);
+      $tabSelect.val(target);
+      $tabContents.hide();
+      $(target).show();
+      e.preventDefault();
+    });
+  
+    $tabSelect.on('change', function() {
+      var target = $(this).val(),
+          targetSelectNum = $(this).prop('selectedIndex');
+  
+      $tabButtonItem.removeClass(activeClass);
+      $tabButtonItem.eq(targetSelectNum).addClass(activeClass);
+      $tabContents.hide();
+      $(target).show();
+    });
+  });
+
+  $('.owl-carousel').owlCarousel({
+    loop:true,
+    margin:10,
+    responsiveClass:true,
+    responsive:{
+        0:{
+            items:1,
+            nav:true
+        },
+        600:{
+            items:3,
+            nav:false
+        },
+        1000:{
+            items:4,
+            nav:true,
+            loop:false
+        }
+    }
+});

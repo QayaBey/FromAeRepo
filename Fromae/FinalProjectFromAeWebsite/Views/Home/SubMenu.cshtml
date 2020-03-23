@@ -1,0 +1,11 @@
+﻿@model IEnumerable<SubMenu>
+@{
+    ViewData["Title"] = "SubMenu";
+}
+
+<h2>SubMenu</h2>
+@foreach (var item in Model)
+{
+<h2>@item.Name</h2> 
+<h2>@item.Link</h2>
+}

@@ -1,0 +1,40 @@
+﻿@model IEnumerable<SubMenu>
+@{
+    ViewData["Title"] = "SubMenu";
+}
+
+    <link rel="stylesheet" href="~/css/SubMenu.css">
+
+<div style="background-color: #eee;">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 return-home"><a href="">Baş Səhifə</a></div>
+        </div>
+    </div>
+</div>
+<section class="border pb-5" style="background-color: #eee;">
+    <div class="container-fluid menu-h1" style="background-color: #fff;">
+        <div class="row">
+            <div>
+                @foreach (var item in ViewBag.SubsName)
+                {
+                    <h1 class="pb-1 pt-4">@item</h1>
+                }
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model)
+            {
+                <div class="submenus">
+                    <a  href="@Url.Action("CategoryData", "Category", new { id = item.Id })" title="Telefonlar">
+                        <img src="~/images/@item.MainImg" alt="Telefonlar">
+                        <span>@item.Name</span>
+                    </a>
+                </div>
+            }
+         </div>
+    </div>
+</section>
+

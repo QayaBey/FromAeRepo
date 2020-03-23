@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Menu>;
+@{
+    Layout = null;
+}
+
+
+    @foreach (var item in Model)
+    {
+
+        <li>
+            <a href="@Url.Action("Submenu", "SubMenu", new { id = item.Id })">
+                @item.Name
+            <label title="Toggle Drop-down" class="drop-icon" for="sm1">▾</label>
+        </a>
+        <input type="checkbox" id="sm1">
+        <ul class="sub-menu">
+            @foreach (var item1 in item.SubMenus)
+            {
+                <li><a href="@Url.Action("CategoryData", "Category", new { id = item1.Id })">@item1.Name</a></li>
+            }
+        </ul>
+    </li>
+    }
+
+
+

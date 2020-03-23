@@ -1,0 +1,380 @@
+﻿@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "ProductData";
+}
+<link rel="stylesheet" asp-append-version="true" href="~/css/products.css">
+<div style="background-color: #eee;">
+    <div class="container">
+        <div class="row d-flex">
+            <div class="return-home"><a href="">Baş Səhifə</a></div>
+            <div class="return-home"><a href="">Elektronika</a></div>
+            <div class="return-home"><a href="">Smartfonlar</a></div>
+        </div>
+    </div>
+</div>
+<section class="product">
+    <div class="container pb-5">
+        <div class="row">
+            <div class="col-md-4 col-lg-3 col-xl-3 product-left">
+                <div class="filter pt-3">
+                    <p>FİLTR</p>
+                </div>
+                <div class="remove">
+                    <p>Currently shopping by:</p>
+                    <ol>
+                        <li>
+                            <a href="">
+                                <span>Kateqoriya:</span> @foreach (var item in ViewBag.ProductName)
+                                {
+                                    <span>@item</span>
+                                } <i class="mdi mdi-home-remove pl-2"></i>
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="clear pb-3">
+                    <a href="">Clear All</a>
+                </div>
+                <div class="marka">
+                    <p>İSTEHSALÇI</p>
+                    <ol class="pl-3">
+                        @foreach (var item in ViewBag.Istehsalci)
+                        {
+                            <li class="attr-filter d-flex pb-2">
+                                <a href="" class="filter-link d-flex align-items-center ">
+                                    <input type="checkbox" onclick="this.parentNode.click();">
+                                    <label class="pl-2 pt-1">@item</label>
+
+                                    <span class="pl-2"></span>
+
+                                </a>
+                            </li>
+                        }
+                    </ol>
+                </div>
+                <div class="marka">
+                        <p>XÜSUSİYƏTLƏR</p>
+                        <ol class="pl-3">
+                            @foreach (var item in ViewBag.PropValue)
+                            {
+                                <li class="attr-filter d-flex pb-2">
+                                    <a href="" class="filter-link d-flex align-items-center ">
+                                        <input type="checkbox" onclick="this.parentNode.click();">
+                                        <label class="pl-2 pt-1">@item</label>
+                                            <span class="pl-2"></span>
+                                    </a>
+                                </li>
+                            }
+                        </ol>
+                </div>
+            </div>
+            <div class="col-12 col-sm-12 col-md-12 col-lg-9 col-xl-9 w-100 product-right">
+                @foreach (var item in ViewBag.ProductName)
+                {
+                    <h1 class="phone-h1 pt-3">@item</h1>
+                }
+                <div class="tabs container">
+                    <div class="tab-button-outer">
+                        <ul id="tab-button">
+                            <li><a style="cursor: default; pointer-events: none; background-color: #fff;" href=""><i class="mdi mdi-table-large"></i></a></li>
+                            <li><a style="cursor: default; pointer-events: none; background-color: #fff;" href=""><i class="mdi mdi-table-of-contents"></i></a></li>
+                            <li><a style="cursor: default; pointer-events: none; background-color: #fff;" href="">Sıralama qaydası:</a></li>
+                            <li><a style="background-color: #fff;" href="#tab01">Sıra <i class="mdi mdi-star-outline"></i></a></li>
+                            <li><a style="background-color: #fff;" href="#tab02">Lowest price <i class="mdi mdi-stairs-down"></i></a></li>
+                            <li><a style="background-color: #fff;" href="#tab03">Higest price <i class="mdi mdi-stairs-up"></i></a></li>
+                        </ul>
+                    </div>
+                    <div id="tab01" class="tab-contents">
+                        @foreach (var item in Model)
+                        {
+                            <div class="card card_content p-2">
+                                <a href="">
+                                    <img class="card-img-top" src="~/images/@item.MainImg" alt="Card image cap">
+                                </a>
+                                <div class="card-body card_info">
+                                    <div class="pb-2 w-100"><a href="">@item.Name</a></div>
+                                    <div class="inner bb">
+                                        <div class="discount"><span class="aa">%@item.Discount</span></div>
+                                        <div class="pl-2"><span><del>$@item.Price</del></span></div>
+                                    </div>
+                                    <div><span>$ @item.SalePrice</span></div>
+
+                                </div>
+                            </div>
+                        }
+                        <nav class="pt-5" aria-label="...">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <span class="page-link">Previous</span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <span class="page-link">
+                                        2
+                                        <span class="sr-only">(current)</span>
+                                    </span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div id="tab02" class="tab-contents pt-2">
+                        @foreach (var item in ViewBag.High)
+                        {
+                            <div class="card card_content p-2">
+                                <a href="">
+                                    <img class="card-img-top" src="~/images/@item.MainImg" alt="Card image cap">
+                                </a>
+                                <div class="card-body card_info">
+                                    <div class="pb-2 w-100"><a href="">@item.Name</a></div>
+                                    <div class="d-flex">
+                                        <div class="discount"><span>@item.Discount%</span></div>
+                                        <div class="pl-2"><span><del>$ @item.Price</del></span></div>
+                                    </div>
+                                    <div><span>$ @item.SalePrice</span></div>
+                                </div>
+                            </div>
+                        }
+                        <nav class="pt-5" aria-label="...">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <span class="page-link">Previous</span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <span class="page-link">
+                                        2
+                                        <span class="sr-only">(current)</span>
+                                    </span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div id="tab03" class="tab-contents pt-2">
+                        @foreach (var item in ViewBag.Low)
+                        {
+                            <div class="card card_content p-2">
+                                <a href="">
+                                    <img class="card-img-top" src="~/images/@item.MainImg" alt="Card image cap">
+                                </a>
+                                <div class="card-body card_info">
+                                    <div class="pb-2 w-100"><a href="">@item.Name</a></div>
+                                    <div class="d-flex">
+                                        <div class="discount"><span>@item.Discount%</span></div>
+                                        <div class="pl-2"><span><del>$ @item.Price</del></span></div>
+                                    </div>
+                                    <div><span>$ @item.SalePrice</span></div>
+                                </div>
+                            </div>
+                        }
+
+                        <nav class="pt-5" aria-label="...">
+                            <ul class="pagination">
+                                <li class="page-item disabled">
+                                    <span class="page-link">Previous</span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                <li class="page-item active">
+                                    <span class="page-link">
+                                        2
+                                        <span class="sr-only">(current)</span>
+                                    </span>
+                                </li>
+                                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <div class="col-11 col-sm-11 col-md-4 col-lg-3 col-xl-3 product-left-after ml-4">
+                <div class="filter pt-3">
+                    <p>FİLTR</p>
+                </div>
+                <div class="remove">
+                    <p>Currently shopping by:</p>
+                    <ol>
+                        <li>
+                            <a href="">
+                                <span>Kateqoriya:</span> <span>Telefonlar</span><i class="mdi mdi-home-remove pl-2"></i>
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="clear pb-3">
+                    <a href="">Clear All</a>
+                </div>
+                <div class="price">
+                    <p>QİYMƏTİ</p>
+                </div>
+                <div class="marka pt-5">
+                    <p>İSTEHSALÇI</p>
+                    <ol class="pl-3">
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="marka">
+                    <p>RƏNG</p>
+                    <ol class="pl-3">
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+                <div class="marka">
+                    <p>OPERATİV YADDAŞ</p>
+                    <ol class="pl-3">
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                        <li class="attr-filter d-flex pb-2">
+                            <a href="" class="filter-link d-flex align-items-center ">
+                                <input type="checkbox" onclick="this.parentNode.click();">
+                                <label class="pl-2 pt-1">Apple</label>
+                                <span class="pl-2">(112)</span>
+                            </a>
+                        </li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script src="~/js/product.js"></script>
+<script>
+     //let diva = document.getElementsByClassName('bb');
+     //   let spana = document.getElementsByClassName('aa');
+
+     //   for (let i = 0; i < spana.length; i++) {
+     //       if (spana[i].innerHTML == '%') {
+     //           console.log('zirt');
+     //           for(let f=0;f<diva.length;f++){
+     //               diva[f].classList.add("d-none");
+     //           }
+     //       }
+     //   }
+</script>
+
+

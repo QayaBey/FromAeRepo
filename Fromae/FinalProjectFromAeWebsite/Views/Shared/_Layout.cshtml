@@ -1,0 +1,207 @@
+﻿@*@model ViewModel*@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Title</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link rel="stylesheet" href="//cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="~/OwlCarousel2-2.3.4/dist/assets/owl.theme.default.min.css">
+    <link rel="stylesheet" href="~/OwlCarousel2-2.3.4/dist/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true">
+    <link href="~/css/SubMenu.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <div class="container-fluid border_top" style="background-color: #fafafa;">
+        <div class="row">
+            <div class="col-4 col-sm-9 col-md-9 col-lg-7 top_left d-flex">
+                <div class="pl-2 pr-2"><i class="mdi mdi-cellphone-basic"></i><a href="">+994 70 311 00 00</a></div>
+                <div class="pl-2 pr-2"><i class="mdi mdi-lifebuoy"></i><a href="">Yardım Mərkəzi</a></div>
+                <div class="pl-2 pr-2"><i class="mdi mdi-map-marker-outline"></i><a href="">Sifarişi izləmək</a></div>
+                <div class="pl-2 pr-2"><i class="mdi mdi-bell-ring-outline"></i><a href="">Blog</a></div>
+            </div>
+            <div class="col-8 col-sm-3 col-md-3 col-lg-5 pl-5 d-flex align-items-center top_right">
+                <img class="pl-5 d-none d-xs-none d-sm-none d-md-none d-lg-block" src="image/az_payment_methods.png"
+                     alt="">
+                <div class="pl-3">
+                    <select name="" id="" class="border-0 language">
+                        <option value="azərbaycan">azərbaycan</option>
+                        <option value="русский">русский</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="container">
+            <div class="row">
+                <div class="col-4 col-sm-3 col-md-2 col-lg-11 col-xl-11 d-flex pt-2 pb-2 align-items-center">
+                    <div>
+                        <img src="~/image/logo.png" width="120" height="49" alt="">
+                    </div>
+                    <div class="search d-none d-lg-block pl-3 pt-2">
+                        @*<form method="get" asp-controller="Product" asp-action="ProductData">*@
+                            <input class="form-control" type="search" id="search" placeholder="Search for products, categories">
+                        @*</form>*@
+                        @*<select name="" id="search_list">
+                            @foreach (var item in Model.GetProducts)
+                            {
+                                <option value="@item.Name">@item.Name</option>
+                            }
+
+                        </select>*@
+                    </div>
+                </div>
+                <div class="col-8 col-sm-9 col-md-10 col-lg-1 col-xl-1 d-flex align-items-center p-0 m-0">
+                    <div class="d-flex align-items-center icon ">
+                        <a class="pl-5 d-lg-none d-md-block hide-menu" href=""><i class="mdi mdi-menu"></i></a>
+                        <a class="show-search d-lg-none d-md-block" href=""><i class="mdi mdi-magnify"></i></a>
+                        <a href=""><i class="mdi mdi-account-outline"></i></a>
+                        <a class="" style="cursor: default;" href=""><i class="mdi mdi-basket-fill"></i></a>
+                        <a class="" href=""><i class="mdi mdi-chat-outline"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid searching" style="background-color: #eee;">
+            <div class="row  p-2">
+                <input class="form-control" type="search" placeholder="Search for products, categories">
+            </div>
+        </div>
+    </div>
+    <header class="">
+        <nav id="menu">
+            <label for="tm" id="toggle-menu">Navigation <span class="drop-icon">▾</span></label>
+            <input type="checkbox" id="tm">
+            <ul class="main-menu clearfix">
+                @await Component.InvokeAsync("Menu")
+            </ul>
+        </nav>
+    </header>
+    @RenderBody()
+
+    <footer class="pt-5" style="background-color: #eeeeee;">
+        <div class="container-fluid pb-5">
+            <div class="row pl-3">
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 user">
+                    <h3>İstifadəçilər</h3>
+                    <ul class="pt-3">
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Sifarişlərim</a></li>
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Hesabım</a></li>
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Xəbərlərim</a></li>
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Zəmanət</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 user">
+                    <h3>İnformasiya</h3>
+                    <ul class="pt-3">
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Haqqımızda</a></li>
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Bizimlə əlaqə</a></li>
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Çatdırılma</a></li>
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Ödənişlər</a></li>
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Göndərmə qaydaları</a></li>
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Məxfilik siyasəti</a></li>
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Xidmət şərtləri</a></li>
+                        <li>
+                            <i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Sifarış və geri qaytarma</a>
+                        </li>
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Sual Cavab?</a></li>
+                        <li><i class="mdi mdi-checkbox-blank-circle-outline"></i><a href="">Axtarış</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 information">
+                    <h3>Əlaqə məlumatı</h3>
+                    <div class="d-flex comnucation pt-3">
+                        <div><i class="mdi mdi-email-outline"></i></div>
+                        <a class="pt-2 pl-3" href=""><span>Email:</span>support@from.ae</a>
+                    </div>
+                    <div class="d-flex comnucation pt-3">
+                        <div><i class="mdi mdi-cellphone"></i></div>
+                        <a class="pt-2 pl-3" href=""><span>Mobil:</span>+99470 311 00 00</a>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-3 col-lg-3 col-xl-3 update">
+                    <h3>Yeniliklər</h3>
+                    <div class="pt-4">
+                        <p>Yeniliklərə Abunə Ol:</p>
+                        <input class="form-control" type="email" placeholder="Email ünvanınızı daxil edin"><br>
+                        <button type="submit">Abunə Ol</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid pt-4">
+            <div class="row">
+                <div class="col-md-12 col-lg-12 col-xl-12 social">
+                    <div class="d-flex justify-content-center">
+                        <a href=""><img src="image/google.png" alt=""></a>
+                        <a class="pl-2" href=""><img src="image/facebook.png" alt=""></a>
+                        <a class="pl-2" href=""><img src="image/twitter.png" alt=""></a>
+                        <a class="pl-2" href=""><img src="image/vk.png" alt=""></a>
+                        <a class="pl-2" href=""><img src="image/watsup.png" alt=""></a>
+                        <a class="pl-2" href=""><img src="image/instagram.png" alt=""></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row pt-4 pb-5">
+                <div class="col-md-12 col-lg-12 col-xl-12 footer_bottom pt-5">
+                    <a href="">Axtarış sorğuları</a>
+                    <a href="">Ətraflı axtarış</a>
+                    <a href="">Sifarış və geri qaytarma</a>
+                    <a href="">Bizimlə əlaqə</a>
+                    <a href="">Saytımızın xəritəsi</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="OwlCarousel2-2.3.4/dist/owl.carousel.js"></script>
+    <script src="OwlCarousel2-2.3.4/dist/owl.carousel.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <script src="/js/home.js"></script>
+    @*<script>
+        $(document).ready(function () {
+            $('#search').keyup(function () {
+                var src = $(this).val();
+                $('#search_list').empty();
+                if (src.length > 0) {
+                    $.ajax({
+                        url: "Product/SearchProduct/" + src,
+                        type: "GET",
+                        success: function (res) {
+                            $('#search_list').append(res)
+                        }
+                    })
+                }
+            })
+        });
+    </script>*@
+    <script>
+        $(document).ready(function () {
+            $(".show-search").click(function () {
+                $(".searching").css("display", "block")
+            });
+        });
+    </script>
+</body>
+
+</html>
